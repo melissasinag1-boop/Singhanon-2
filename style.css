@@ -1,0 +1,521 @@
+/* ============================================================
+   SINGHANON — Stylesheet
+   Merriam-Webster-inspired: serif headings, teal/gold accent,
+   clean white reading surface, mobile-first.
+   ============================================================ */
+
+:root {
+  --navy: #0e6f6b;
+  --navy-dark: #0a4d4a;
+  --crimson: #c1892b;
+  --crimson-dark: #9c6d1f;
+  --paper: #fbfdfc;
+  --ink: #24262b;
+  --ink-soft: #5b5f66;
+  --line: #dbe7e5;
+  --gold: #c1892b;
+
+  /* Part-of-speech accent colors */
+  --pos-n: #2f5d8a;      /* noun — blue */
+  --pos-adj: #b0790c;    /* adjective — amber */
+  --pos-adv: #6d4c2f;    /* adverb — brown */
+  --pos-rv: #2f7d5c;     /* regular verb — green */
+  --pos-cv: #c15b18;     /* causative verb — orange */
+  --pos-dv: #7a4fa3;     /* distributive verb — purple */
+  --pos-st: #8a2f4e;     /* stative verb — plum */
+  --pos-pro: #1f8a8a;    /* pronouns — teal */
+  --pos-fn: #6b6f76;     /* function words/particles — gray */
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Source Serif Pro", Georgia, "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  padding-bottom: 3rem;
+}
+
+a { color: inherit; }
+
+/* ---------- Header ---------- */
+
+header.site-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 0.9rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-title {
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.brand-sub {
+  font-family: Arial, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #cdd6e6;
+}
+
+nav.top-tabs {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+}
+
+nav.top-tabs button {
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+nav.top-tabs button.active {
+  background: var(--crimson);
+  border-color: var(--crimson);
+}
+
+.install-btn {
+  margin-left: auto;
+  background: rgba(255,255,255,0.12) !important;
+}
+
+.app-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0.55rem 1rem;
+  background: #fff4dd;
+  border-bottom: 1px solid var(--line);
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+
+.app-banner button {
+  flex-shrink: 0;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  font-family: Arial, sans-serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+/* ---------- Search ---------- */
+
+.search-wrap {
+  max-width: 900px;
+  margin: 1.1rem auto 0.5rem;
+  padding: 0 1rem;
+}
+
+.search-box {
+  display: flex;
+  border: 2px solid var(--navy);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  padding: 0.65rem 0.8rem;
+  font-size: 1.05rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.search-box button {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  padding: 0 1.1rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* ---------- Alphabet strip ---------- */
+
+.alpha-strip {
+  max-width: 900px;
+  margin: 0.6rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.alpha-strip button {
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.alpha-strip button.active,
+.alpha-strip button:hover {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+.alpha-strip button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ---------- Main content ---------- */
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.result-count {
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin: 0.4rem 0 0.8rem;
+}
+
+/* ---------- Word list ---------- */
+
+.word-card {
+  border-bottom: 1px solid var(--line);
+  padding: 0.85rem 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.word-card:hover { background: #f7f4ec; }
+
+.word-card-main { flex: 1; min-width: 0; }
+
+.word-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.word-headline .word {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+
+.pos-tag {
+  font-family: Arial, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.word-def-preview {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin-top: 0.15rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.heart-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.1rem;
+  flex-shrink: 0;
+  color: var(--line);
+}
+
+.heart-btn.saved { color: var(--crimson); }
+
+/* ---------- Word detail (modal) ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,18,28,0.55);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 40;
+}
+
+@media (min-width: 640px) {
+  .overlay { align-items: center; }
+}
+
+.detail-sheet {
+  background: #fff;
+  width: 100%;
+  max-width: 640px;
+  max-height: 88vh;
+  overflow-y: auto;
+  border-radius: 14px 14px 0 0;
+  padding: 1.3rem 1.3rem 1.6rem;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.25);
+}
+
+@media (min-width: 640px) {
+  .detail-sheet { border-radius: 14px; }
+}
+
+.detail-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.detail-word {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+
+.detail-close {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--ink-soft);
+  line-height: 1;
+}
+
+.detail-meta {
+  margin: 0.5rem 0 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.origin-tag {
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+}
+
+.detail-definition {
+  font-size: 1.08rem;
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+
+.detail-example {
+  background: #f7f4ec;
+  border-left: 3px solid var(--gold);
+  padding: 0.6rem 0.8rem;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 0.8rem;
+}
+
+.detail-example .akl { font-style: italic; }
+.detail-example .eng { color: var(--ink-soft); font-size: 0.92rem; }
+
+.detail-extra {
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.3rem;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.9rem;
+}
+
+.detail-actions button {
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  border-radius: 6px;
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.detail-actions .fav-action.saved { background: var(--crimson); color: #fff; border-color: var(--crimson); }
+.detail-actions .report-action { color: var(--crimson); }
+
+/* ---------- About page ---------- */
+
+.about-header {
+  text-align: center;
+  margin: 1.4rem 0 0.6rem;
+}
+
+.about-header .logo-mark { width: 64px; height: 64px; margin: 0 auto 0.5rem; }
+
+.about-header h1 { font-size: 1.7rem; margin: 0.2rem 0; }
+.about-header p.tagline { color: var(--ink-soft); font-family: Arial, sans-serif; font-size: 0.85rem; }
+
+.accordion-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.accordion-header {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.9rem 0.2rem;
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.accordion-header .chev {
+  font-family: Arial, sans-serif;
+  transition: transform 0.15s ease;
+  color: var(--crimson);
+}
+
+.accordion-item.open .accordion-header .chev { transform: rotate(180deg); }
+
+.accordion-body {
+  display: none;
+  padding: 0 0.2rem 1.1rem;
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+.accordion-item.open .accordion-body { display: block; }
+
+.accordion-body p { margin: 0 0 0.8rem; }
+.accordion-body ul { margin: 0 0 0.8rem 1.2rem; padding: 0; }
+.accordion-body li { margin-bottom: 0.35rem; }
+.accordion-body .aklanon-line { font-style: italic; color: var(--navy-dark); }
+
+/* ---------- Report modal ---------- */
+
+.report-form textarea {
+  width: 100%;
+  min-height: 90px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.report-form label {
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  display: block;
+  margin: 0.7rem 0 0.3rem;
+}
+
+.report-form .submit-report {
+  margin-top: 0.9rem;
+  background: var(--crimson);
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+
+.confirm-note {
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  color: #2f7d5c;
+  margin-top: 0.6rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 2.5rem 1rem;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+}
+
+footer.site-footer {
+  max-width: 900px;
+  margin: 2rem auto 0;
+  padding: 1rem;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}

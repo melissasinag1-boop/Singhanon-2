@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Singhanon &mdash; Aklanon&ndash;English Dictionary</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230e6f6b'/%3E%3Cpath d='M50 32 C40 27 27 27 18 31 L18 72 C27 68 40 68 50 73 Z' fill='%23fbfdfc'/%3E%3Cpath d='M50 32 C60 27 73 27 82 31 L82 72 C73 68 60 68 50 73 Z' fill='%23fbfdfc'/%3E%3Cpath d='M38 6 H62 V42 L50 33 L38 42 Z' fill='%23c1892b'/%3E%3Ctext x='50' y='27' font-family='Georgia,serif' font-weight='700' font-size='20' fill='%230a4d4a' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+
+<!-- PWA: installable + offline -->
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<meta name="theme-color" content="#0e6f6b" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Singhanon" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="100" height="100" rx="18" fill="#0e6f6b"/>
+      <!-- open book: two pages meeting at a center spine -->
+      <path d="M50 32 C40 27 27 27 18 31 L18 72 C27 68 40 68 50 73 Z" fill="#fbfdfc"/>
+      <path d="M50 32 C60 27 73 27 82 31 L82 72 C73 68 60 68 50 73 Z" fill="#fbfdfc"/>
+      <path d="M50 32 L50 73" stroke="#0a4d4a" stroke-width="1.6"/>
+      <path d="M27 40 L43 37 M27 48 L43 45 M27 56 L43 53" stroke="#c8ded9" stroke-width="2" stroke-linecap="round"/>
+      <path d="M73 40 L57 37 M73 48 L57 45 M73 56 L57 53" stroke="#c8ded9" stroke-width="2" stroke-linecap="round"/>
+      <!-- bookmark ribbon carrying the initial -->
+      <path d="M38 6 H62 V42 L50 33 L38 42 Z" fill="#c1892b"/>
+      <text x="50" y="27" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="20" fill="#0a4d4a" text-anchor="middle">S</text>
+    </svg>
+    <div class="brand-text">
+      <span class="brand-title">Singhanon</span>
+      <span class="brand-sub">Aklanon&ndash;English Dictionary</span>
+    </div>
+  </div>
+  <nav class="top-tabs">
+    <button id="tab-dictionary" class="active">Dictionary</button>
+    <button id="tab-favorites">Saved Words</button>
+    <button id="tab-about">About</button>
+    <button id="install-btn" class="install-btn" style="display:none;" aria-label="Install app">&#8681; Install</button>
+  </nav>
+</header>
+
+<div id="app-banner" class="app-banner" style="display:none;"></div>
+
+<!-- ================= DICTIONARY VIEW ================= -->
+<div id="view-dictionary">
+  <div class="search-wrap">
+    <div class="search-box">
+      <input id="search-input" type="text" placeholder="Search an Aklanon word or English meaning&hellip;" autocomplete="off" />
+      <button type="button" aria-label="Search">&#128269;</button>
+    </div>
+  </div>
+
+  <div id="alpha-strip" class="alpha-strip"></div>
+
+  <main>
+    <div id="result-count" class="result-count"></div>
+    <div id="word-list"></div>
+  </main>
+</div>
+
+<!-- ================= ABOUT VIEW ================= -->
+<div id="view-about" style="display:none;">
+  <main>
+    <div class="about-header">
+      <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="100" height="100" rx="18" fill="#0e6f6b"/>
+        <path d="M50 32 C40 27 27 27 18 31 L18 72 C27 68 40 68 50 73 Z" fill="#fbfdfc"/>
+        <path d="M50 32 C60 27 73 27 82 31 L82 72 C73 68 60 68 50 73 Z" fill="#fbfdfc"/>
+        <path d="M50 32 L50 73" stroke="#0a4d4a" stroke-width="1.6"/>
+        <path d="M27 40 L43 37 M27 48 L43 45 M27 56 L43 53" stroke="#c8ded9" stroke-width="2" stroke-linecap="round"/>
+        <path d="M73 40 L57 37 M73 48 L57 45 M73 56 L57 53" stroke="#c8ded9" stroke-width="2" stroke-linecap="round"/>
+        <path d="M38 6 H62 V42 L50 33 L38 42 Z" fill="#c1892b"/>
+        <text x="50" y="27" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="20" fill="#0a4d4a" text-anchor="middle">S</text>
+      </svg>
+      <h1>Singhanon</h1>
+      <p class="tagline">An offline Aklanon&ndash;English mobile dictionary prototype</p>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">About Singhanon <span class="chev">&#9660;</span></button>
+      <div class="accordion-body">
+        <p class="aklanon-line">Mayad nga adlaw! Kumusta?</p>
+        <p>Welcome to Singhanon, an offline Aklanon&ndash;English mobile dictionary prototype developed as part of a developmental research study. Singhanon is designed to provide an accessible digital reference for selected Aklanon words and their English meanings.</p>
+        <p>Through this prototype, Aklanon vocabulary is organized into a convenient mobile format while recognizing the importance of documenting and preserving the language.</p>
+        <p>Saeamat for exploring Singhanon and for being part of the journey toward keeping the Aklanon language visible, accessible, and remembered.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Purpose <span class="chev">&#9660;</span></button>
+      <div class="accordion-body">
+        <p>Singhanon was developed to provide an accessible offline reference for selected Aklanon words and their English translations. It aims to organize Aklanon vocabulary into a convenient digital format that can be used for language reference, learning, and documentation.</p>
+        <p>As a research prototype, Singhanon also aims to demonstrate how existing Aklanon linguistic resources can be transformed into a functional mobile dictionary and evaluated for functionality, usability, and user acceptability.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">How to Use <span class="chev">&#9660;</span></button>
+      <div class="accordion-body">
+        <ul>
+          <li>Open the <strong>Dictionary</strong> tab and type a word in the search bar to look it up in Aklanon or English.</li>
+          <li>Use the letter strip to browse entries alphabetically.</li>
+          <li>Tap any word to see its full entry: part of speech, meaning, and an example sentence where available.</li>
+          <li>Tap the heart icon on a word to save it. Saved words appear under the <strong>Saved Words</strong> tab.</li>
+          <li>If you notice an entry that seems inaccurate or unsuitable for young learners, open the word and tap <strong>Report content</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">About the Research <span class="chev">&#9660;</span></button>
+      <div class="accordion-body">
+        <p>This mobile dictionary prototype, Singhanon, was developed as part of a developmental research study entitled &ldquo;Singhanon: A Developmental Research and Evaluation of an Offline Aklanon&ndash;English Mobile Dictionary Prototype.&rdquo;</p>
+        <p>The study focuses on the development and evaluation of an offline digital dictionary that provides selected Aklanon words with their English translations and related information. It aims to create an accessible and user-friendly reference tool that can support the documentation and continued use of the Aklanon language.</p>
+        <p>The prototype undergoes evaluation to determine its functionality, usability, and acceptability among the intended users. Feedback gathered from the evaluation will be used to identify areas for improvement and guide the refinement of the prototype.</p>
+        <p>This application is a research prototype developed for academic purposes.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Sources &amp; References <span class="chev">&#9660;</span></button>
+      <div class="accordion-body">
+        <p><strong>Source of Dictionary Entries</strong></p>
+        <p>The Aklanon vocabulary and English translations presented in Singhanon are primarily based on <em>A Study of the Aklanon Dialect, Volume Two: Dictionary (of Root Words and Derivations), Aklanon to English</em> by Salas Reyes, Zorc, and Prado (1969).</p>
+        <p>The selected entries from the original dictionary were digitized and organized into an offline mobile dictionary prototype as part of this developmental research.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Acknowledgments <span class="chev">&#9660;</span></button>
+      <div class="accordion-body">
+        <p class="aklanon-line">Saeamat!</p>
+        <p>We sincerely thank our research adviser, panelists, validators, participants, and everyone who contributed to the development and evaluation of Singhanon. Above all, we thank the Aklanon-speaking community for inspiring this project.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Development Team <span class="chev">&#9660;</span></button>
+      <div class="accordion-body">
+        <p><strong>Researcher:</strong> Melissa Sinag</p>
+        <p><strong>Research Advisers:</strong></p>
+        <ul>
+          <li>Prof. Erwin Liberato</li>
+          <li>Prof. Edmer Hilario</li>
+          <li>Prof. Elmer Hilario</li>
+          <li>Prof. Precious Navejas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Version Information <span class="chev">&#9660;</span></button>
+      <div class="accordion-body">
+        <p><strong>App:</strong> Singhanon<br/>
+        <strong>Version:</strong> 1.0 Prototype<br/>
+        <strong>Release:</strong> 2026<br/>
+        <strong>Platform:</strong> Mobile<br/>
+        <strong>Mode:</strong> Offline<br/>
+        <strong>Status:</strong> Research Prototype &mdash; developed as part of a developmental research study</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  Singhanon &mdash; a research prototype. Entries adapted from Salas Reyes, Zorc &amp; Prado (1969), Peace Corps (ERIC ED145704).
+</footer>
+
+<div id="detail-root"></div>
+<div id="report-root"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script src="pwa.js"></script>
+</body>
+</html>
