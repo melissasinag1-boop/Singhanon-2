@@ -150,3 +150,14 @@ const POS_LABELS = {
   "ST3": "stative verb (class 3)", "ST4": "stative verb (class 4)",
   "ST5": "stative verb (class 5)",
 };
+
+/* ------------------------------------------------------------
+   Make both available on window explicitly.
+   Top-level const/let in a plain script do NOT attach to window
+   (only var does), but app.js reads them as window.DICTIONARY_
+   ENTRIES and window.POS_LABELS. Without these two lines, the
+   app always sees an empty dictionary, no matter what data.js
+   contains.
+   ------------------------------------------------------------ */
+window.DICTIONARY_ENTRIES = DICTIONARY_ENTRIES;
+window.POS_LABELS = POS_LABELS;

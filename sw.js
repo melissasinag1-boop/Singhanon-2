@@ -9,7 +9,7 @@
    the new files instead of serving the old cached copies.
    ============================================================ */
 
-const CACHE_VERSION = "singhanon-v1";
+const CACHE_VERSION = "singhanon-v2";
 
 const APP_SHELL = [
   "./",
